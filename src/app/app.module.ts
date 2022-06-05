@@ -8,12 +8,14 @@ import { FavsComponent } from './components/favs/favs.component';
 import { SquadComponent } from './components/squad/squad.component';
 
 import { StepsModule } from 'primeng/steps';
-import {RatingModule} from 'primeng/rating';
-import {CardModule} from 'primeng/card';
-import {InputTextModule} from 'primeng/inputtext';
+import { RatingModule } from 'primeng/rating';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import {DividerModule} from 'primeng/divider';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import {DividerModule} from 'primeng/divider';
     BrowserAnimationsModule,
     StepsModule,
     RatingModule,
+    MessageModule,
+    MessagesModule,
     CardModule,
     InputTextModule,
     DividerModule,
