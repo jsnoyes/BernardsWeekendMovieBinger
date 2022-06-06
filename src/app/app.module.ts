@@ -16,6 +16,7 @@ import { MessagesModule } from 'primeng/messages';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DividerModule } from 'primeng/divider';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DividerModule } from 'primeng/divider';
     CardModule,
     InputTextModule,
     DividerModule,
+    ButtonModule,
     FormsModule,
     AppRoutingModule,
   ],
