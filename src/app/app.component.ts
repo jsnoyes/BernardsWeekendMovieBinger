@@ -11,9 +11,9 @@ import {MenuItem} from 'primeng/api';
 export class AppComponent {
   title = 'WeekendBinger';
   steps: MenuItem[] = [
-    { label: 'Favs', routerLink: '/Favs' },
-    { label: 'Squad', routerLink: '/Squad' },
-    { label: 'Mood', routerLink: '/Mood' },
+    { label: 'Favs', routerLink: 'favs' },
+    { label: 'Squad', routerLink: 'squad' },
+    { label: 'Mood', routerLink: 'mood' },
   ];
 
   ngOnInut() { }

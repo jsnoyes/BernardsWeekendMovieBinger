@@ -1,6 +1,7 @@
 <p-messages severity="info">
-    <ng-template pTemplate>
-        <div class="ml-2">Rate the following movies. Do not rate movies that you have not seen. </div>
+    <ng-template pTemplate [style]="{'width': '100%'}">
+        <div>Rate the following movies. Do not rate movies that you have not seen. </div>        
+        <p-button routerLink="/squad" type="button" icon="pi pi-arrow-right" style="margin-left: auto" iconPos="right" label="Next"></p-button>
     </ng-template>
 </p-messages>
 

@@ -5,10 +5,10 @@ import { MoodComponent } from './components/mood/mood.component';
 import { SquadComponent } from './components/squad/squad.component';
 
 const routes: Routes = [ 
-  { path: 'Favs', component: FavsComponent }, 
-  { path: 'Squad', component: SquadComponent }, 
-  { path: 'Mood', component: MoodComponent }, 
-  { path: '**', redirectTo: 'Favs' }, 
+  { path: 'favs', component: FavsComponent }, 
+  { path: 'squad', component: SquadComponent }, 
+  { path: 'mood', component: MoodComponent }, 
+  { path: '**', redirectTo: 'favs' }, 
 ];
 
 @NgModule({

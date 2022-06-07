@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Movie } from 'src/app/models/movie';
 
 @Component({
   selector: 'app-favs',
   templateUrl: './favs.component.html',
-  styleUrls: ['./favs.component.css']
+  styleUrls: ['./favs.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FavsComponent implements OnInit {
 
@@ -17,8 +18,7 @@ export class FavsComponent implements OnInit {
     { name: 'The Silence of the Lambs', year: 1991, preference: 0, image: '../../../assets/The Silence of the Lambs.jpg'},
     { name: 'Back to the Future', year: 1985, preference: 0, image: '../../../assets/Back to the Future.jpg'},
     { name: 'Alien', year: 1979, preference: 0, image: '../../../assets/Alien.jpg'},
-    { name: 'The Shining', year: 1980, preference: 0, image: '../../../assets/The Shining.jpg'}]; 
-  test: number = 0;
+    { name: 'The Shining', year: 1980, preference: 0, image: '../../../assets/The Shining.jpg'}];
   
   constructor() { }
 
