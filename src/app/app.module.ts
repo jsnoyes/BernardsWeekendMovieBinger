@@ -21,6 +21,7 @@ import { SliderModule } from 'primeng/slider';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CalculatingComponent } from './components/calculating/calculating.component';
 import { ResultsComponent } from './components/results/results.component';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { ResultsComponent } from './components/results/results.component';
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

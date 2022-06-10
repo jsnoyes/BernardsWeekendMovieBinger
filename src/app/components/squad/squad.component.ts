@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-squad',
@@ -12,7 +13,7 @@ export class SquadComponent implements OnInit {
   rangeValues: number[] = [18, 45];
   includesParents: boolean = false;
 
-  constructor() { }
+  constructor(public readonly dataService: DataService) { }
 
   ngOnInit(): void {
   }
