@@ -6,20 +6,20 @@
     </ng-template>
 </p-messages>
 
-<p-card>
+<p-card *ngIf="(dataService.squad$ | async); let squad">
     <div class="p-fluid grid">
         <div class="field col-12 md:col-4">
             <span>
                 <h5>How many people?</h5>
-                <input type="number" id="numWatchers" pInputText [(ngModel)]="dataService.squad$.numWatchers"> 
+                <input type="number" id="numWatchers" pInputText [ngModel]="squad.numWatchers" (ngModelChange)="updateSquad({numWatchers: $event})"> 
             </span>
         </div>
     </div>
     <div class="p-fluid grid">
         <div class="field col-12 md:col-4">
             <span>
-                <h5>What is the age range? {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>
-                <p-slider [(ngModel)]="rangeValues" id="ageRange" [range]="true"></p-slider>
+                <h5>What is the age range? {{squad.rangeValues[0] + ' - ' + squad.rangeValues[1]}}</h5>
+                <p-slider [ngModel]="squad.rangeValues" (ngModelChange)="updateSquad({rangeValues: $event})" id="ageRange" [range]="true"></p-slider>
             </span>
         </div>
     </div>
@@ -27,7 +27,7 @@
         <div class="field col-12 md:col-4">
             <span>
                 <h5>With parents?</h5>
-                <p-checkbox name="groupname" value="val1" [(ngModel)]="includesParents"></p-checkbox>
+                <p-checkbox name="groupname" value="val1" [ngModel]="squad.includesParents" (ngModelChange)="updateSquad({includesParents: $event})"></p-checkbox>
             </span>
         </div>
     </div>

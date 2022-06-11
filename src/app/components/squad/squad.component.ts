@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Squad } from 'src/app/models/squad';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -9,13 +10,12 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class SquadComponent implements OnInit {
 
-  numWatchers: number | undefined;
-  rangeValues: number[] = [18, 45];
-  includesParents: boolean = false;
-
   constructor(public readonly dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
+  updateSquad(squadPartial: Partial<Squad>): void {
+    this.dataService.updateSquad(squadPartial);
+  }
 }
