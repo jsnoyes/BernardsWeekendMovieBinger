@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Message } from 'primeng/api';
+import { BehaviorSubject, firstValueFrom, Observable, timer } from 'rxjs';
 import { Mood } from '../models/mood';
 import { Movie } from '../models/movie';
 import { Squad } from '../models/squad';
@@ -31,6 +32,8 @@ export class DataService {
 
   private mood: BehaviorSubject<Mood> = new BehaviorSubject<Mood>(this.initMood);
   public $mood: Observable<Mood> = this.mood.asObservable();
+
+  public messages: Message[] = [];
   
   constructor() { }
 
@@ -47,5 +50,19 @@ export class DataService {
 
   public updateMood(partialMood: Partial<Mood>): void {
     this.mood.next({...this.mood.value, ...partialMood });
+  }
+
+  public async sendMessages(): Promise<void> {
+    this.messages.push({severity: 'info', detail: 'Loading MovieMatcher model...'});
+    await this.delay(3000);
+    this.messages.push({severity: 'info', detail: 'Categorizing user based on entered movie ratings...'});
+    await this.delay(3000);
+    this.messages.push({severity: 'info', detail: 'User found as strong match for category "Simple"...'});
+    await this.delay(1000);
+
+  }
+
+  private delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }

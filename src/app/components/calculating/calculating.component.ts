@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-calculating',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculatingComponent implements OnInit {
 
-  constructor() { }
+  constructor(public readonly dataService: DataService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.dataService.sendMessages();
   }
 
 }
