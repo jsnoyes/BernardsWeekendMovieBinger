@@ -1,7 +1,24 @@
 <p-messages severity="info">
     <ng-template pTemplate>
         <p-button routerLink="/squad" type="button" icon="pi pi-arrow-left" iconPos="left" label="Back"></p-button>
-        <div style="margin-right: auto; margin-left: auto;">Set the mood. </div>
+        <div style="margin-right: auto; margin-left: auto; text-align: center;">Set the mood. </div>
         <p-button routerLink="/calculating" type="button" icon="pi pi-check" iconPos="right" label="Submit"></p-button>
     </ng-template>
 </p-messages>
+
+<p-card *ngIf="(dataService.$mood | async); let mood">
+    <div class="grid formgrid text-center">
+        <span class="field col-12 md:col-4">
+            <h5>Energy Level</h5>
+            <p-knob valueColor="red" [size]="200" [ngModel]="mood.energyLevel" (ngModelChange)="updateMood({energyLevel: $event})"></p-knob>
+        </span>
+        <span class="field col-12 md:col-4">
+            <h5>Thoughtfulness</h5>
+            <p-knob [size]="200" [ngModel]="mood.thoughtfulness" (ngModelChange)="updateMood({thoughtfulness: $event})"></p-knob>
+        </span>
+        <span class="field col-12 md:col-4">
+            <h5>Humor</h5>
+            <p-knob valueColor="green" [size]="200" [ngModel]="mood.humor" (ngModelChange)="updateMood({humor: $event})"></p-knob>
+        </span>
+    </div>
+</p-card>

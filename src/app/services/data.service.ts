@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Mood } from '../models/mood';
 import { Movie } from '../models/movie';
 import { Squad } from '../models/squad';
 
@@ -20,16 +21,21 @@ export class DataService {
 
   private initSquad: Squad = {numWatchers: 1, rangeValues: [18, 45], includesParents: false};
 
+  private initMood: Mood = { energyLevel: 50, thoughtfulness: 50, humor: 50 };
+
   private squad: BehaviorSubject<Squad> = new BehaviorSubject<Squad>(this.initSquad);
-  public squad$: Observable<Squad> = this.squad.asObservable();
+  public $squad: Observable<Squad> = this.squad.asObservable();
 
   private movies: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>(this.initMovies);
-  public $movies: Observable<Movie[]> = this.movies.asObservable()
+  public $movies: Observable<Movie[]> = this.movies.asObservable();
+
+  private mood: BehaviorSubject<Mood> = new BehaviorSubject<Mood>(this.initMood);
+  public $mood: Observable<Mood> = this.mood.asObservable();
   
   constructor() { }
 
-  public updateSquad(newSquad: Partial<Squad>): void {
-    this.squad.next({...this.squad.value, ...newSquad });
+  public updateSquad(partialSquad: Partial<Squad>): void {
+    this.squad.next({...this.squad.value, ...partialSquad });
   }
 
   public updateMovie(movieName: string, movieRating: number): void {
@@ -37,5 +43,9 @@ export class DataService {
     const ind = movies.findIndex((mov) => mov.name === movieName);
     movies[ind].preference = movieRating;
     this.movies.next(movies);
+  }
+
+  public updateMood(partialMood: Partial<Mood>): void {
+    this.mood.next({...this.mood.value, ...partialMood });
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Mood } from 'src/app/models/mood';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-mood',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoodComponent implements OnInit {
 
-  constructor() { }
+  constructor(public readonly dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
+  updateMood(partialMood: Partial<Mood>): void {
+    this.dataService.updateMood(partialMood);
+  }
 }

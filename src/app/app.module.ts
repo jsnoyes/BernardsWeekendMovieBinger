@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { SliderModule } from 'primeng/slider';
+import { KnobModule } from 'primeng/knob';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CalculatingComponent } from './components/calculating/calculating.component';
 import { ResultsComponent } from './components/results/results.component';
@@ -43,6 +44,7 @@ import { DataService } from './services/data.service';
     CardModule,
     InputTextModule,
     DividerModule,
+    KnobModule,
     ButtonModule,
     SliderModule,
     FormsModule,

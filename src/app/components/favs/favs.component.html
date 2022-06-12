@@ -5,8 +5,8 @@
     </ng-template>
 </p-messages>
 
-<div class="grid" *ngIf="(dataService.$movies | async); let movies">
-    <div class="col-12 md:col-6 xl:col-4 align-content-center justify-content-center" *ngFor="let movie of movies">
+<div class="grid align-content-center justify-content-center" *ngIf="(dataService.$movies | async); let movies">
+    <div class="col-12 md:col-6 xl:col-4 align-content-center justify-content-center" style="max-width: 575px; min-width: 340px !important;" *ngFor="let movie of movies">
         <p-card>
             <ng-template pTemplate="header">
                 <div class="flex align-content-center justify-content-center">
