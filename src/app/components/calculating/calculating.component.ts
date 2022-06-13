@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,10 +9,11 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CalculatingComponent implements OnInit {
 
-  constructor(public readonly dataService: DataService) { }
+  constructor(public readonly dataService: DataService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     await this.dataService.sendMessages();
+    this.router.navigate(['/result', {id: 1}]);
   }
 
 }

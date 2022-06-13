@@ -3,6 +3,7 @@ import { Message } from 'primeng/api';
 import { BehaviorSubject, firstValueFrom, Observable, timer } from 'rxjs';
 import { Mood } from '../models/mood';
 import { Movie } from '../models/movie';
+import { Result } from '../models/result';
 import { Squad } from '../models/squad';
 
 @Injectable({
@@ -20,6 +21,18 @@ export class DataService {
     { name: 'Alien', year: 1979, preference: 0, image: '../../../assets/Alien.jpg'},
     { name: 'The Shining', year: 1980, preference: 0, image: '../../../assets/The Shining.jpg'}];
 
+  private initResult1: Result = {
+    id: 1, name: 'Weekend at Bernie\'s', year: 1989, image: '../../../assets/Weekend at Bernie\'s.jpg', preference: 99,
+    gif: '../../../assets/Weekend at Bernie\'s.gif', 
+    description: 'Two idiots try to pretend that their murdered employer is really alive, leading the hitman to attempt to track him down to finish him off.'
+  };  
+
+  private initResult2: Result = {
+    id: 2, name: 'Weekend at Bernie\'s II', year: 1989, image: '../../../assets/Weekend at Bernie\'s II.jpg', preference: 98,
+    gif: '../../../assets/Weekend at Bernie\'s II.gif', 
+    description: 'Larry and Richard use a voodoo-revived corpse to track down hidden money to clear their names.'
+  };
+
   private initSquad: Squad = {numWatchers: 1, rangeValues: [18, 45], includesParents: false};
 
   private initMood: Mood = { energyLevel: 50, thoughtfulness: 50, humor: 50 };
@@ -34,6 +47,9 @@ export class DataService {
   public $mood: Observable<Mood> = this.mood.asObservable();
 
   public messages: Message[] = [];
+
+  private calculatingProgress: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  public $calculatingProgress: Observable<number> = this.calculatingProgress.asObservable();
   
   constructor() { }
 
@@ -53,13 +69,49 @@ export class DataService {
   }
 
   public async sendMessages(): Promise<void> {
-    this.messages.push({severity: 'info', detail: 'Loading MovieMatcher model...'});
-    await this.delay(3000);
-    this.messages.push({severity: 'info', detail: 'Categorizing user based on entered movie ratings...'});
-    await this.delay(3000);
-    this.messages.push({severity: 'info', detail: 'User found as strong match for category "Simple"...'});
+    this.messages = [ ...this.messages, {severity: 'info', detail: 'Loading MovieMatcher model...'}];
     await this.delay(1000);
+    this.calculatingProgress.next(12);
 
+    this.messages = [ ...this.messages, {severity: 'info', detail: 'Categorizing user based on entered movie ratings...'}];
+    await this.delay(1000);
+    this.calculatingProgress.next(33);
+
+    this.messages = [ ...this.messages, {severity: 'info', detail: 'User found as strong match for category "Simple"...'}];
+    await this.delay(2000);
+    this.calculatingProgress.next(45);
+
+    if(this.squad.value.numWatchers){
+      this.messages = [ ...this.messages, {severity: 'info', detail: 'Number of people watching is "1". Filtering out movies preferred by people labeled "social"...'}];
+      await this.delay(1500);
+      this.calculatingProgress.next(56);
+    }
+
+    if(this.squad.value.rangeValues[1] > 30)
+      this.messages = [ ...this.messages, {severity: 'info', detail: `Age range goes to "${this.squad.value.rangeValues[1]}". Filtering out movies preferred by people labeled "modern"...`}];
+    else
+      this.messages = [ ...this.messages, {severity: 'info', detail: `Age range goes to "${this.squad.value.rangeValues[1]}". Filtering out movies with fewer than 7 explosions...`}];
+    await this.delay(1000);
+    this.calculatingProgress.next(73);
+
+    if(this.squad.value.includesParents)
+      this.messages = [ ...this.messages, {severity: 'info', detail: '"With parents" is "true". Filtering out movies with awkward scenes...'}];
+    await this.delay(1500);
+    this.calculatingProgress.next(82);
+
+    if(this.mood.value.energyLevel > this.mood.value.thoughtfulness && this.mood.value.energyLevel > this.mood.value.humor)
+      this.messages = [ ...this.messages, {severity: 'info', detail: 'Primary mood is "energy". Filtering out movies preferred by people labeled "intelligent" and "funny"...'}];        
+    else if(this.mood.value.thoughtfulness > this.mood.value.energyLevel && this.mood.value.thoughtfulness > this.mood.value.humor)
+      this.messages = [ ...this.messages, {severity: 'info', detail: 'Primary mood is "thoughfulness". Filtering out movies preferred by people labeled "active" and "funny"...'}];
+    else
+      this.messages = [ ...this.messages, {severity: 'info', detail: 'Primary mood is "humor". Filtering out movies preferred by people labeled "active" and "intelligent"...'}];
+      await this.delay(2000);
+      this.calculatingProgress.next(100);
+      await this.delay(1000);
+  }
+
+  public getResult(id: number): Result{
+    return id % 2 === 0 ? this.initResult1 : this.initResult2;
   }
 
   private delay(ms: number) {

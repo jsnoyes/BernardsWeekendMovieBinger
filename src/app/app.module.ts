@@ -19,10 +19,12 @@ import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { SliderModule } from 'primeng/slider';
 import { KnobModule } from 'primeng/knob';
+import { ProgressBarModule } from 'primeng/progressbar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CalculatingComponent } from './components/calculating/calculating.component';
 import { ResultsComponent } from './components/results/results.component';
 import { DataService } from './services/data.service';
+import { MatchComponent } from './components/match/match.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { DataService } from './services/data.service';
     FavsComponent,
     SquadComponent,
     CalculatingComponent,
-    ResultsComponent
+    ResultsComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { DataService } from './services/data.service';
     MessageModule,
     MessagesModule,
     CardModule,
+    ProgressBarModule,
     InputTextModule,
     DividerModule,
     KnobModule,
