@@ -105,13 +105,13 @@ export class DataService {
       this.messages = [ ...this.messages, {severity: 'info', detail: 'Primary mood is "thoughfulness". Filtering out movies preferred by people labeled "active" and "funny"...'}];
     else
       this.messages = [ ...this.messages, {severity: 'info', detail: 'Primary mood is "humor". Filtering out movies preferred by people labeled "active" and "intelligent"...'}];
-      await this.delay(2000);
-      this.calculatingProgress.next(100);
-      await this.delay(1000);
+    await this.delay(2000);
+    this.calculatingProgress.next(100);
+    await this.delay(5000);
   }
 
   public getResult(id: number): Result{
-    return id % 2 === 0 ? this.initResult1 : this.initResult2;
+    return id % 2 === 1 ? this.initResult1 : this.initResult2;
   }
 
   private delay(ms: number) {

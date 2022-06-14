@@ -24,7 +24,6 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { CalculatingComponent } from './components/calculating/calculating.component';
 import { ResultsComponent } from './components/results/results.component';
 import { DataService } from './services/data.service';
-import { MatchComponent } from './components/match/match.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import { MatchComponent } from './components/match/match.component';
     FavsComponent,
     SquadComponent,
     CalculatingComponent,
-    ResultsComponent,
-    MatchComponent
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
