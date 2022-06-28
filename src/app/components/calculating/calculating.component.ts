@@ -8,12 +8,16 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./calculating.component.css']
 })
 export class CalculatingComponent implements OnInit {
+  public isCalculating = true;
 
   constructor(public readonly dataService: DataService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     await this.dataService.sendMessages();
-    this.router.navigate(['/result', {id: 1}]);
+    this.isCalculating = false;
   }
 
+  nextResult(): void {
+    this.router.navigate(['/result', {id: 1}]);
+  }
 }

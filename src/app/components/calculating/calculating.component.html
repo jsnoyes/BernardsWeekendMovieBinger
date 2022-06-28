@@ -1,2 +1,9 @@
-<p-progressBar [value]="dataService.$calculatingProgress | async"></p-progressBar>
+<p-messages *ngIf="!isCalculating" severity="info">
+    <ng-template pTemplate>
+        <span class="flex-grow-1 flex align-items-center justify-content-center px-5">State-of-the-art artificial intelligence has determined that the best movie match given your personality, intelligence, sociability, and mood is: </span>        
+        <p-button class="flex-none flex align-items-center justify-content-center px-5" (click)="nextResult()" type="submit" icon="pi pi-arrow-right" iconPos="right" label="Go To Results"></p-button>
+    </ng-template>
+</p-messages>
+
+<p-progressBar *ngIf="isCalculating" [value]="dataService.$calculatingProgress | async"></p-progressBar>
 <p-messages [(value)]="dataService.messages"></p-messages>
