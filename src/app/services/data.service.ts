@@ -50,6 +50,9 @@ export class DataService {
 
   private calculatingProgress: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   public $calculatingProgress: Observable<number> = this.calculatingProgress.asObservable();
+
+  private startCalculating: (() => void) | undefined;
+  private stopCalculating: (() => void) | undefined;
   
   constructor() { }
 
@@ -68,45 +71,55 @@ export class DataService {
     this.mood.next({...this.mood.value, ...partialMood });
   }
 
-  public async sendMessages(): Promise<void> {
-    this.messages = [ ...this.messages, {severity: 'info', detail: 'Loading MovieMatcher model...'}];
+  public async calculate(): Promise<void> {
+    const interval = setInterval(this.startCalculating!, 33);
+    
+    this.messages = [ ...this.messages, {severity: 'success', detail: 'Loading MovieMatcher model...'}];
     await this.delay(1000);
     this.calculatingProgress.next(12);
 
-    this.messages = [ ...this.messages, {severity: 'info', detail: 'Categorizing user based on entered movie ratings...'}];
+    this.messages = [ ...this.messages, {severity: 'success', detail: 'Categorizing user based on entered movie ratings...'}];
     await this.delay(1000);
     this.calculatingProgress.next(33);
 
-    this.messages = [ ...this.messages, {severity: 'info', detail: 'User found as strong match for category "Simple"...'}];
+    this.messages = [ ...this.messages, {severity: 'success', detail: 'User found as strong match for category "Simple"...'}];
     await this.delay(2000);
     this.calculatingProgress.next(45);
 
     if(this.squad.value.numWatchers){
-      this.messages = [ ...this.messages, {severity: 'info', detail: 'Number of people watching is "1". Filtering out movies preferred by people labeled "social"...'}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: 'Number of people watching is "1". Filtering out movies preferred by people labeled "social"...'}];
       await this.delay(1500);
       this.calculatingProgress.next(56);
     }
 
     if(this.squad.value.rangeValues[1] > 30)
-      this.messages = [ ...this.messages, {severity: 'info', detail: `Age range goes to "${this.squad.value.rangeValues[1]}". Filtering out movies preferred by people labeled "modern"...`}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: `Age range goes to "${this.squad.value.rangeValues[1]}". Filtering out movies preferred by people labeled "modern"...`}];
     else
-      this.messages = [ ...this.messages, {severity: 'info', detail: `Age range goes to "${this.squad.value.rangeValues[1]}". Filtering out movies with fewer than 7 explosions...`}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: `Age range goes to "${this.squad.value.rangeValues[1]}". Filtering out movies with fewer than 7 explosions...`}];
     await this.delay(1000);
     this.calculatingProgress.next(73);
 
     if(this.squad.value.includesParents)
-      this.messages = [ ...this.messages, {severity: 'info', detail: '"With parents" is "true". Filtering out movies with awkward scenes...'}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: '"With parents" is "true". Filtering out movies with awkward scenes...'}];
     await this.delay(1500);
     this.calculatingProgress.next(82);
 
     if(this.mood.value.energyLevel > this.mood.value.thoughtfulness && this.mood.value.energyLevel > this.mood.value.humor)
-      this.messages = [ ...this.messages, {severity: 'info', detail: 'Primary mood is "energy". Filtering out movies preferred by people labeled "intelligent" and "funny"...'}];        
+      this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "energy". Filtering out movies preferred by people labeled "intelligent" and "funny"...'}];        
     else if(this.mood.value.thoughtfulness > this.mood.value.energyLevel && this.mood.value.thoughtfulness > this.mood.value.humor)
-      this.messages = [ ...this.messages, {severity: 'info', detail: 'Primary mood is "thoughfulness". Filtering out movies preferred by people labeled "active" and "funny"...'}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "thoughfulness". Filtering out movies preferred by people labeled "active" and "funny"...'}];
     else
-      this.messages = [ ...this.messages, {severity: 'info', detail: 'Primary mood is "humor". Filtering out movies preferred by people labeled "active" and "intelligent"...'}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "humor". Filtering out movies preferred by people labeled "active" and "intelligent"...'}];
     await this.delay(2000);
     this.calculatingProgress.next(100);
+
+    this.stopCalculating!();
+    clearInterval(interval);
+  }
+
+  public initCalculations(start: () => void, stop: () => void): void {
+    this.startCalculating = start;
+    this.stopCalculating = stop;
   }
 
   public getResult(id: number): Result{

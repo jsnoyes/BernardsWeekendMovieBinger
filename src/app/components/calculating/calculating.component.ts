@@ -13,7 +13,7 @@ export class CalculatingComponent implements OnInit {
   constructor(public readonly dataService: DataService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    await this.dataService.sendMessages();
+    await this.dataService.calculate();
     this.isCalculating = false;
   }
 
