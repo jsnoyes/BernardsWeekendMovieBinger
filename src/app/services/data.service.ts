@@ -28,7 +28,7 @@ export class DataService {
   };  
 
   private initResult2: Result = {
-    id: 2, name: 'Weekend at Bernie\'s II', year: 1989, image: 'Weekend at Bernie\'s II.jpg', preference: 98,
+    id: 2, name: 'Weekend at Bernie\'s II', year: 1993, image: 'Weekend at Bernie\'s II.jpg', preference: 98,
     gif: 'Weekend at Bernie\'s II.gif', 
     description: 'Larry and Richard use a voodoo-revived corpse to track down hidden money to clear their names.'
   };

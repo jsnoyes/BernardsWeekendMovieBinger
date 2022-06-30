@@ -1,7 +1,7 @@
 <p-messages severity="info">
     <ng-template pTemplate>
-        <span class="flex-grow-1 flex align-items-center justify-content-center px-5">State-of-the-art artificial intelligence has determined that the best movie match given your personality, intelligence, sociability, and mood is: </span>        
-        <p-button class="flex-none flex align-items-center justify-content-center px-5" (click)="nextResult()" type="submit" icon="pi pi-arrow-right" iconPos="right" label="Next Result"></p-button>
+        <span class="flex-grow-1 flex align-items-center justify-content-center pr-5">State-of-the-art artificial intelligence has determined that the best movie match given your personality, intelligence, sociability, and mood is: </span>        
+        <p-button  (click)="nextResult()" type="submit" icon="pi pi-arrow-right" iconPos="right" label="Results"></p-button>
     </ng-template>
 </p-messages>
 
@@ -10,8 +10,11 @@
         <p-card>
             <ng-template pTemplate="title" class="flex align-content-center justify-content-center">
                 <div class="flex align-content-center justify-content-center">
-                    <h3>
-                       <span style="color: red">{{id > 2 ? '(Rewatch)': ''}}</span> {{result.name}}
+                    <span style="color: red">{{id > 2 ? '(Rewatch)': ''}} </span>
+                </div>
+                <div class="flex align-content-center justify-content-center">
+                    <h3 class="flex justify-self-center">
+                       <span>{{result.name}}</span>
                     </h3>
                 </div>
             </ng-template>

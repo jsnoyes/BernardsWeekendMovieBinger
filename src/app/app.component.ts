@@ -9,7 +9,7 @@ import { DataService } from './services/data.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterViewInit {
-  title = 'Weekend Binger';
+  title = 'Bernard\'s Weekend Movie Binger';
   steps: MenuItem[] = [
     { label: 'Favs', routerLink: 'favs' },
     { label: 'Squad', routerLink: 'squad' },

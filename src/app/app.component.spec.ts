@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'WeekendBinger'`, () => {
+  it(`should have as title 'BernardsWeekendMovieBinger'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('WeekendBinger');
+    expect(app.title).toEqual('BernardsWeekendMovieBinger');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('WeekendBinger app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('BernardsWeekendMovieBinger app is running!');
   });
 });
