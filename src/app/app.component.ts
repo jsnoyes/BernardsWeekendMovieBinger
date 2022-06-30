@@ -9,7 +9,7 @@ import { DataService } from './services/data.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterViewInit {
-  title = 'WeekendBinger';
+  title = 'Weekend Binger';
   steps: MenuItem[] = [
     { label: 'Favs', routerLink: 'favs' },
     { label: 'Squad', routerLink: 'squad' },
@@ -55,11 +55,5 @@ export class AppComponent implements AfterViewInit {
       ths.context.fillStyle='#0F0';
     }
   }
-
-  ngOnDestroy() {
-  }
-
-  ngOnInut() {
-   }
   
 }

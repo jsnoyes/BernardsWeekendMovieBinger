@@ -110,8 +110,9 @@ export class DataService {
       this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "thoughfulness". Filtering out movies preferred by people labeled "active" and "funny"...'}];
     else
       this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "humor". Filtering out movies preferred by people labeled "active" and "intelligent"...'}];
-    await this.delay(2000);
-    this.calculatingProgress.next(100);
+    await this.delay(1000);
+    this.calculatingProgress.next(100);    
+    await this.delay(1000);
 
     this.stopCalculating!();
     clearInterval(interval);
