@@ -87,13 +87,13 @@ export class DataService {
     this.calculatingProgress.next(45);
 
     if(this.squad.value.numWatchers){
-      this.messages = [ ...this.messages, {severity: 'success', detail: 'Number of people watching is "1". Filtering out movies preferred by people labeled "social"...'}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: 'Number of people watching is "1". Filtering out movies preferred by users categorized as "social"...'}];
       await this.delay(1500);
       this.calculatingProgress.next(56);
     }
 
     if(this.squad.value.rangeValues[1] > 30)
-      this.messages = [ ...this.messages, {severity: 'success', detail: `Age range goes to "${this.squad.value.rangeValues[1]}". Filtering out movies preferred by people labeled "modern"...`}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: `Age range goes to "${this.squad.value.rangeValues[1]}". Filtering out movies preferred by users categorized as "modern"...`}];
     else
       this.messages = [ ...this.messages, {severity: 'success', detail: `Age range goes to "${this.squad.value.rangeValues[1]}". Filtering out movies with fewer than 7 explosions...`}];
     await this.delay(1000);
@@ -105,11 +105,11 @@ export class DataService {
     this.calculatingProgress.next(82);
 
     if(this.mood.value.energyLevel > this.mood.value.thoughtfulness && this.mood.value.energyLevel > this.mood.value.humor)
-      this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "energy". Filtering out movies preferred by people labeled "intelligent" and "funny"...'}];        
+      this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "energy". Filtering out movies preferred by users categorized as "intelligent" and "funny"...'}];        
     else if(this.mood.value.thoughtfulness > this.mood.value.energyLevel && this.mood.value.thoughtfulness > this.mood.value.humor)
-      this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "thoughfulness". Filtering out movies preferred by people labeled "active" and "funny"...'}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "thoughfulness". Filtering out movies preferred by users categorized as "active" and "funny"...'}];
     else
-      this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "humor". Filtering out movies preferred by people labeled "active" and "intelligent"...'}];
+      this.messages = [ ...this.messages, {severity: 'success', detail: 'Primary mood is "humor". Filtering out movies preferred by users categorized as "active" and "intelligent"...'}];
     await this.delay(1000);
     this.calculatingProgress.next(100);    
     await this.delay(1000);
