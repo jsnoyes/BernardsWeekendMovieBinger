@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Result } from 'src/app/models/result';
 import { DataService } from 'src/app/services/data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-results',
@@ -13,6 +14,8 @@ export class ResultsComponent implements OnInit {
   result!: Result;
   loaded = false;
   id!: number;
+
+  public assetLocation = environment.assetLocation;
 
   constructor(private route: ActivatedRoute, public dataService: DataService, private router: Router) { }
 

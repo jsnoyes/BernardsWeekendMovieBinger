@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Movie } from 'src/app/models/movie';
 import { DataService } from 'src/app/services/data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-favs',
@@ -9,6 +10,8 @@ import { DataService } from 'src/app/services/data.service';
   encapsulation: ViewEncapsulation.None
 })
 export class FavsComponent implements OnInit {
+
+  public assetLocation = environment.assetLocation;
   
   constructor(public readonly dataService: DataService) { }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Message } from 'primeng/api';
-import { BehaviorSubject, firstValueFrom, Observable, timer } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Mood } from '../models/mood';
 import { Movie } from '../models/movie';
 import { Result } from '../models/result';
@@ -11,25 +11,25 @@ import { Squad } from '../models/squad';
 })
 export class DataService {
   private initMovies: Movie[] = [
-    { name: 'Groundhog Day', year: 1993, preference: 0, image: '../../../assets/Groundhog Day.jpg'},
-    { name: 'The Shawshank Redemption', year: 1994, preference: 0, image: '../../../assets/The Shawshank Redemption.jpg'},
-    { name: 'Aladdin', year: 1992, preference: 0, image: '../../../assets/Aladdin.jpg'},
-    { name: 'Schindler\'s List', year: 1993, preference: 0, image: '../../../assets/Schindler\'s List.jpg'},
-    { name: 'Fight Club', year: 1999, preference: 0, image: '../../../assets/Fight Club.jpg'},
-    { name: 'The Silence of the Lambs', year: 1991, preference: 0, image: '../../../assets/The Silence of the Lambs.jpg'},
-    { name: 'Back to the Future', year: 1985, preference: 0, image: '../../../assets/Back to the Future.jpg'},
-    { name: 'Alien', year: 1979, preference: 0, image: '../../../assets/Alien.jpg'},
-    { name: 'The Shining', year: 1980, preference: 0, image: '../../../assets/The Shining.jpg'}];
+    { name: 'Groundhog Day', year: 1993, preference: 0, image: 'Groundhog Day.jpg'},
+    { name: 'The Shawshank Redemption', year: 1994, preference: 0, image: 'The Shawshank Redemption.jpg'},
+    { name: 'Aladdin', year: 1992, preference: 0, image: 'Aladdin.jpg'},
+    { name: 'Schindler\'s List', year: 1993, preference: 0, image: 'Schindler\'s List.jpg'},
+    { name: 'Fight Club', year: 1999, preference: 0, image: 'Fight Club.jpg'},
+    { name: 'The Silence of the Lambs', year: 1991, preference: 0, image: 'The Silence of the Lambs.jpg'},
+    { name: 'Back to the Future', year: 1985, preference: 0, image: 'Back to the Future.jpg'},
+    { name: 'Alien', year: 1979, preference: 0, image: 'Alien.jpg'},
+    { name: 'The Shining', year: 1980, preference: 0, image: 'The Shining.jpg'}];
 
   private initResult1: Result = {
-    id: 1, name: 'Weekend at Bernie\'s', year: 1989, image: '../../../assets/Weekend at Bernie\'s.jpg', preference: 99,
-    gif: '../../../assets/Weekend at Bernie\'s.gif', 
+    id: 1, name: 'Weekend at Bernie\'s', year: 1989, image: 'Weekend at Bernie\'s.jpg', preference: 99,
+    gif: 'Weekend at Bernie\'s.gif', 
     description: 'Two idiots try to pretend that their murdered employer is really alive, leading the hitman to attempt to track him down to finish him off.'
   };  
 
   private initResult2: Result = {
-    id: 2, name: 'Weekend at Bernie\'s II', year: 1989, image: '../../../assets/Weekend at Bernie\'s II.jpg', preference: 98,
-    gif: '../../../assets/Weekend at Bernie\'s II.gif', 
+    id: 2, name: 'Weekend at Bernie\'s II', year: 1989, image: 'Weekend at Bernie\'s II.jpg', preference: 98,
+    gif: 'Weekend at Bernie\'s II.gif', 
     description: 'Larry and Richard use a voodoo-revived corpse to track down hidden money to clear their names.'
   };
 

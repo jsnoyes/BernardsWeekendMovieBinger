@@ -25,8 +25,8 @@
 
             <ng-template pTemplate="content">
                 <div class="flex flex-wrap justify-content-center gap-3">
-                    <img style="height: 405px; border: 1px solid gray;" [src]="result.image" alt="{{ result.name }}">
-                    <img style="width: clamp(200px, 100%, 700px); height: auto; border: 1px solid gray;" [src]="result.gif" alt="{{ result.name }}">                
+                    <img style="height: 405px; border: 1px solid gray;" [src]="assetLocation + result.image" alt="{{ result.name }}">
+                    <img style="width: clamp(200px, 100%, 700px); height: auto; border: 1px solid gray;" [src]="assetLocation + result.gif" alt="{{ result.name }}">                
                 </div>
             </ng-template>   
 
