@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import { environment } from 'src/environments/environment';
 import { DataService } from './services/data.service';
 
 @Component({
@@ -14,7 +15,10 @@ export class AppComponent implements AfterViewInit {
     { label: 'Favs', routerLink: 'favs' },
     { label: 'Squad', routerLink: 'squad' },
     { label: 'Mood', routerLink: 'mood' },
+    { label: 'Calculate', routerLink: 'calculating' },
+    { label: 'Results', routerLink: 'result' },
   ];
+  logo = environment.assetLocation + "Logo.jpg";
 
   @ViewChild('myCanvas')
   private myCanvas: ElementRef = {} as ElementRef;
