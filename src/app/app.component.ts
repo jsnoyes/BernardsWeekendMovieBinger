@@ -43,7 +43,7 @@ export class AppComponent implements AfterViewInit {
       this.context.fillStyle='#0F0';
       const ttt = this;
       letters.map(function(y_pos, index){
-        const text = String.fromCharCode(33 + Math.random() * 93);
+        const text = String.fromCharCode(3e4+Math.random()*33);
         const x_pos = index * 10;
         ttt.context.fillText(text, x_pos, y_pos);
         letters[index] = (y_pos > 758 + Math.random() * 1e4) ? 0 : y_pos + 10;
