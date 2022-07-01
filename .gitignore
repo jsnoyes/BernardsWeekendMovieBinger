@@ -5,7 +5,6 @@
 /tmp
 /out-tsc
 /bazel-out
-/docs/CNAME
 
 # Node
 /node_modules
